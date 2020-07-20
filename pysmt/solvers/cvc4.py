@@ -611,6 +611,8 @@ class CVC4Converter(Converter, DagWalker):
             return_type = type_.getRangeType()
             param_types = tuple(self._cvc4_type_to_type(ty) for ty in type_.getArgTypes())
             return types.FunctionType(return_type, param_types)
+        elif type_.isString():
+            return types.STRING
         else:
             raise NotImplementedError("Unsupported type: %s" % type_)
 

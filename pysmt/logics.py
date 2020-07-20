@@ -601,6 +601,7 @@ QF_SLIA = Logic(name="QF_SLIA",
                 integer_arithmetic=True,
                 quantifier_free=True,
                 uninterpreted=True,
+                arrays=True,
                 strings=True)
 
 
@@ -792,6 +793,7 @@ def get_closer_logic(supported_logics, logic):
     """
     res = [l for l in supported_logics if logic <= l]
     if len(res) == 0:
+        pass
         raise NoLogicAvailableError("Logic %s is not supported" % logic)
     return min(res)
 
