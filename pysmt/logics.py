@@ -601,6 +601,14 @@ QF_SLIA = Logic(name="QF_SLIA",
                 integer_arithmetic=True,
                 quantifier_free=True,
                 uninterpreted=True,
+                strings=True)
+
+QF_ASLIA = Logic(name="QF_ASLIA",
+                description=\
+                """Extension of LIA including theory of Strings.""",
+                integer_arithmetic=True,
+                quantifier_free=True,
+                uninterpreted=True,
                 arrays=True,
                 strings=True)
 
@@ -651,7 +659,8 @@ SMTLIB2_LOGICS = frozenset([ AUFLIA,
                              QF_UFNRA,
                              QF_UFNIA,
                              QF_UFLIRA,
-                             QF_SLIA
+                             QF_SLIA,
+                             QF_ASLIA
                          ])
 
 LOGICS = SMTLIB2_LOGICS | frozenset([ QF_BOOL, BOOL, QF_AUFBVLIRA])
@@ -665,7 +674,7 @@ PYSMT_LOGICS = frozenset([QF_BOOL, QF_IDL, QF_LIA, QF_LRA, QF_RDL, QF_UF, QF_UFI
                           QF_UFLIA, QF_UFLRA, QF_UFLIRA,
                           BOOL, LRA, LIA, UFLIRA, UFLRA,
                           QF_BV, QF_UFBV,
-                          QF_SLIA,
+                          QF_SLIA, QF_ASLIA,
                           QF_BV, QF_UFBV,
                           QF_ABV, QF_AUFBV, QF_AUFLIA, QF_ALIA, QF_AX,
                           QF_AUFBVLIRA,
@@ -793,7 +802,6 @@ def get_closer_logic(supported_logics, logic):
     """
     res = [l for l in supported_logics if logic <= l]
     if len(res) == 0:
-        pass
         raise NoLogicAvailableError("Logic %s is not supported" % logic)
     return min(res)
 
