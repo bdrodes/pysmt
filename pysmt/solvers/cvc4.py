@@ -252,11 +252,25 @@ class CVC4Converter(Converter, DagWalker):
                 v = expr.getConstString()
                 res = self.mgr.String(v.toString())
             elif expr.getType().isArray():
-                const_ = expr.getConstArrayStoreAll()
-                array_type = self._cvc4_type_to_type(const_.getType())
-                base_value = self.back(const_.getExpr())
-                res = self.mgr.Array(array_type.index_type,
-                                     base_value)
+                # if no children, typical array declaration
+                if not expr.getChildren():
+                    const_ = expr.getConstArrayStoreAll()
+                    array_type = self._cvc4_type_to_type(const_.getType())
+                    base_value = self.back(const_.getExpr())
+                    res = self.mgr.Array(array_type.index_type,
+                                        base_value)
+                # if children, expecting index assignments of this form: 
+                #     ARRAY(STRING OF STRING) : "" WITH ["a"] := "1", ["b"] := "2"
+                # The children have been observed to be as follows for the above example: 
+                #   child 0: ARRAY(STRING OF STRING) : "" WITH ["a"] := "1"
+                #   child 1: "b"
+                #   child 2: "2" 
+                else: 
+                    assert len(expr.getChildren()) == 3
+                    arr = self.back(expr.getChild(0))
+                    ind = self.back(expr.getChild(1))
+                    val = self.back(expr.getChild(2))
+                    res = self.mgr.Store(arr, ind, val)
             else:
                 raise PysmtTypeError("Unsupported constant type:",
                                      expr.getType().toString())
