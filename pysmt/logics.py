@@ -612,6 +612,16 @@ QF_ASLIA = Logic(name="QF_ASLIA",
                 arrays=True,
                 strings=True)
 
+QF_ASLIRA = Logic(name="QF_ASLIRA",
+                description=\
+                """Extension of LIA including theory of Strings.""",
+                real_arithmetic=True,
+                integer_arithmetic=True,
+                quantifier_free=True,
+                uninterpreted=True,
+                strings=True,
+                arrays=True)
+
 
 QF_AUFBVLIRA = Logic(name="QF_AUFBVLIRA",
                      description=\
@@ -660,7 +670,8 @@ SMTLIB2_LOGICS = frozenset([ AUFLIA,
                              QF_UFNIA,
                              QF_UFLIRA,
                              QF_SLIA,
-                             QF_ASLIA
+                             QF_ASLIA,
+                             QF_ASLIRA
                          ])
 
 LOGICS = SMTLIB2_LOGICS | frozenset([ QF_BOOL, BOOL, QF_AUFBVLIRA])
@@ -674,7 +685,7 @@ PYSMT_LOGICS = frozenset([QF_BOOL, QF_IDL, QF_LIA, QF_LRA, QF_RDL, QF_UF, QF_UFI
                           QF_UFLIA, QF_UFLRA, QF_UFLIRA,
                           BOOL, LRA, LIA, UFLIRA, UFLRA,
                           QF_BV, QF_UFBV,
-                          QF_SLIA, QF_ASLIA,
+                          QF_SLIA, QF_ASLIA,QF_ASLIRA,
                           QF_BV, QF_UFBV,
                           QF_ABV, QF_AUFBV, QF_AUFLIA, QF_ALIA, QF_AX,
                           QF_AUFBVLIRA,

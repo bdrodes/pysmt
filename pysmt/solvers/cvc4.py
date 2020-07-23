@@ -58,7 +58,7 @@ class CVC4Options(SolverOptions):
             raise PysmtValueError("Error setting the option '%s=%s'" % (name,value))
 
     def __call__(self, solver):
-        if solver.logic_name == "QF_SLIA" or solver.logic_name == "QF_ASLIA":
+        if solver.logic_name == "QF_SLIA" or solver.logic_name == "QF_ASLIA" or solver.logic_name == "QF_ASLIRA":
             self._set_option(solver.cvc4,
                              "strings-exp", "true")
 
