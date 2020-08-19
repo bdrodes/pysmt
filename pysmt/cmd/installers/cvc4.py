@@ -38,10 +38,11 @@ class CVC4Installer(SolverInstaller):
         self.bin_path = os.path.join(self.build_path, "src", "bindings", "python")
 
     def move(self):
-        CVC4_py = os.path.join(self.bin_path, "CVC4.py")
-        CVC4_so = os.path.join(self.bin_path, "_CVC4.so")
-        SolverInstaller.mv(CVC4_py, self.bindings_dir)
-        SolverInstaller.mv(CVC4_so, self.bindings_dir)
+        pass 
+        #CVC4_py = os.path.join(self.bin_path, "CVC4.py")
+        #CVC4_so = os.path.join(self.bin_path, "_CVC4.so")
+        #SolverInstaller.mv(CVC4_py, self.bindings_dir)
+        #SolverInstaller.mv(CVC4_so, self.bindings_dir)
 
     def compile(self):
         # Build ANTLR
@@ -67,8 +68,7 @@ class CVC4Installer(SolverInstaller):
                              './configure.sh'], directory=self.extract_path)
 
         # Configure and build CVC4
-        config_cmd = "./configure.sh --language-bindings=python \
-                                     --python%s" % self.python_version[0]
+        config_cmd = "./configure.sh --python-bindings"
 
         if os.path.exists(sys.executable+"-config"):
             pyconfig = {"PYTHON_CONFIG": sys.executable+"-config"}

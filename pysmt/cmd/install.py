@@ -35,8 +35,10 @@ Installer = namedtuple("Installer",
                        ["InstallerClass", "version", "extra_params"])
 INSTALLERS = [
     Installer(MSatInstaller,    "5.6.1", {}),
-    Installer(CVC4Installer,    "1.7-prerelease",
-              {"git_version" : "391ab9df6c3fd9a3771864900c1718534c1e4666"}),
+    Installer(CVC4Installer,    "1.9-prerelease",
+                {"git_version" : "944cb8e5381c47ccc49955a19609921399bb9437"}),
+    # Installer(CVC4Installer,    "1.7-prerelease",
+    #           {"git_version" : "391ab9df6c3fd9a3771864900c1718534c1e4666"}),
     Installer(Z3Installer,      "4.8.7", {"osx": "10.14.6"}),
     Installer(YicesInstaller,   "2.6.2",
               {"yicespy_version": "f0768ffeec15ea310f830d10878971c9998454ac"}),
