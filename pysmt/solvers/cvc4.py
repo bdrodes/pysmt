@@ -275,9 +275,9 @@ class CVC4Converter(Converter, DagWalker):
             #         res = self.mgr.Store(arr, ind, val)
             else:
                 raise PysmtTypeError("Unsupported constant type:",
-                                     expr.getType().toString())
+                                     expr.getSort())
         else:
-            raise PysmtTypeError("Unsupported expression:", expr.toString())
+            raise PysmtTypeError("Unsupported expression:", expr)
 
         return res
 
