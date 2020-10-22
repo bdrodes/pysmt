@@ -558,6 +558,9 @@ class CVC4Converter(Converter, DagWalker):
     def walk_str_replace(self, formula, args, **kwargs):
         return self.mkExpr(CVC4.STRING_STRREPL, args[0], args[1], args[2])
 
+    def walk_str_replace_all(self, formula, args, **kwargs):
+        return self.mkExpr(CVC4.STRING_STRREPLALL, args[0], args[1], args[2])
+
     def walk_str_substr(self, formula, args, **kwargs):
         return self.mkExpr(CVC4.STRING_SUBSTR, args[0], args[1], args[2])
 

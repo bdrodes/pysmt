@@ -815,6 +815,13 @@ def StrReplace(s, t1, t2):
     """
     return get_env().formula_manager.StrReplace(s, t1, t2)
 
+def StrReplaceAll(s, t1, t2):
+    """Returns a new string where the first occurrence of t1 is replace by t2.
+
+    where s, t1 and t2 are string terms, t1 is non-empty.
+    """
+    return get_env().formula_manager.StrReplaceAll(s, t1, t2)
+
 def StrSubstr(s, i, j):
     """Returns a substring of s starting at i and ending at j+i.
 

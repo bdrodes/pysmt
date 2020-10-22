@@ -435,6 +435,7 @@ class SmtLibParser(object):
                             'str.contains':self._operator_adapter(mgr.StrContains),
                             'str.indexof':self._operator_adapter(mgr.StrIndexOf),
                             'str.replace':self._operator_adapter(mgr.StrReplace),
+                            'str.replaceall':self._operator_adapter(mgr.StrReplaceAll),
                             'str.substr':self._operator_adapter(mgr.StrSubstr),
                             'str.prefixof':self._operator_adapter(mgr.StrPrefixOf),
                             'str.suffixof':self._operator_adapter(mgr.StrSuffixOf),

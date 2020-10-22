@@ -906,6 +906,15 @@ class Simplifier(pysmt.walkers.DagWalker):
             return self.manager.String(s_str.replace(t1_str, t2_str, 1))
         return self.manager.StrReplace(s, t1, t2)
 
+    def walk_str_replace_all(self, formula, args, **kwargs):
+        s, t1, t2 = args
+        if s.is_string_constant() and t1.is_string_constant() and t2.is_string_constant():
+            t1_str = t1.constant_value()
+            t2_str = t2.constant_value()
+            s_str = s.constant_value()
+            return self.manager.String(s_str.replace(t1_str, t2_str))
+        return self.manager.StrReplaceAll(s, t1, t2)
+
     def walk_str_substr(self, formula, args, **kwargs):
         s, i, j = args
         if s.is_string_constant() and i.is_int_constant() and j.is_int_constant():

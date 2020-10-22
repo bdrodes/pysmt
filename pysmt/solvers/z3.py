@@ -867,6 +867,8 @@ class Z3Converter(Converter, DagWalker):
         z3.Z3_inc_ref(self.ctx.ref(), z3term)
         return z3term
 
+    # TODO: str_replace_all? 
+
     def walk_str_substr(self, formula, args, **kwargs):
         z3term = z3.Z3_mk_seq_extract(self.ctx.ref(), args[0], args[1], args[2])
         z3.Z3_inc_ref(self.ctx.ref(), z3term)

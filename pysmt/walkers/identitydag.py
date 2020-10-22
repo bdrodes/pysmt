@@ -204,6 +204,9 @@ class IdentityDagWalker(DagWalker):
     def walk_str_replace(self, formula, args, **kwargs):
         return self.mgr.StrReplace(args[0], args[1], args[2])
 
+    def walk_str_replace_all(self, formula, args, **kwargs):
+        return self.mgr.StrReplaceAll(args[0], args[1], args[2])
+
     def walk_str_substr(self, formula, args, **kwargs):
         return self.mgr.StrSubstr(args[0], args[1], args[2])
 

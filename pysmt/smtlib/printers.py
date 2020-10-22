@@ -219,6 +219,15 @@ class SmtPrinter(TreeWalker):
         self.walk(formula.arg(2))
         self.write(")")
 
+    def walk_str_replace_all(self,formula, **kwargs):
+        self.write("( str.replaceall " )
+        self.walk(formula.arg(0))
+        self.write(" ")
+        self.walk(formula.arg(1))
+        self.write(" ")
+        self.walk(formula.arg(2))
+        self.write(")")
+
     def walk_str_substr(self,formula, **kwargs):
         self.write("( str.substr " )
         self.walk(formula.arg(0))
@@ -585,6 +594,9 @@ class SmtDagPrinter(DagWalker):
         return "( str.indexof %s %s %s )" % (args[0], args[1], args[2])
 
     def walk_str_replace(self,formula, args, **kwargs):
+        return "( str.replace %s %s %s )" % (args[0], args[1], args[2])
+
+    def walk_str_replace_all(self,formula, args, **kwargs):
         return "( str.replace %s %s %s )" % (args[0], args[1], args[2])
 
     def walk_str_substr(self,formula, args,**kwargs):

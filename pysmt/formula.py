@@ -969,6 +969,13 @@ class FormulaManager(object):
         """
         return self.create_node(node_type=op.STR_REPLACE, args=(s, t1, t2))
 
+    def StrReplaceAll(self, s, t1, t2):
+        """Returns a new string where the first occurrence of t1 is replace by t2.
+
+        where s, t1 and t2 are string terms, t1 is non-empty.
+        """
+        return self.create_node(node_type=op.STR_REPLACE_ALL, args=(s, t1, t2))
+
     def StrSubstr(self, s, i, j):
         """Returns a substring of s starting at i and ending at j+i.
 
